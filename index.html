@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoCompra | Tienda tecnológica</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <a class="logo" href="#" aria-label="TecnoCompra inicio"> TecnoCompra</a>
+        <nav>
+            <button class="boton-nav" data-vista="inicio">Inicio</button>
+            <button class="boton-nav" data-vista="catalogo">Productos</button>
+            <button class="boton-nav" data-vista="carrito">Carrito (<span id="cantidad-carrito">0</span>)</button>
+            <button class="boton-nav" data-vista="datos">Mis datos</button>
+            <button id="cerrar-sesion-header" class="boton-nav oculto" data-cerrar-sesion="true">Cerrar sesión</button>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <!-- VISTA DE INICIO DE SESIÓN -->
+        <section id="vista-inicio" class="vista">
+            <div class="panel acceso">
+                <p class="etiqueta">TU TIENDA TECNOLÓGICA</p>
+                <h1>Bienvenido a TecnoCompra</h1>
+                <p>Inicia sesión o registra una cuenta para comprar.</p>
+                <form id="form-login">
+                    <label for="login-usuario">Usuario</label>
+                    <input id="login-usuario" required autocomplete="username">
+                    <label for="login-clave">Contraseña</label>
+                    <input id="login-clave" type="password" required autocomplete="current-password">
+                    <button class="boton principal" type="submit">Iniciar sesión</button>
+                </form>
+                <p id="mensaje-login" class="mensaje" aria-live="polite"></p>
+                <div class="separador"></div>
+                <h2>Crear cuenta</h2>
+                <form id="form-registro">
+                    <label for="registro-nombre">Nombre completo</label>
+                    <input id="registro-nombre" required>
+                    <label for="registro-correo">Correo electrónico</label>
+                    <input id="registro-correo" type="email" required>
+                    <label for="registro-direccion">Dirección de envío</label>
+                    <input id="registro-direccion" required>
+                    <label for="registro-usuario">Nombre de usuario</label>
+                    <input id="registro-usuario" required autocomplete="username">
+                    <label for="registro-clave">Contraseña</label>
+                    <input id="registro-clave" type="password" required minlength="4" autocomplete="new-password">
+                    <button class="boton secundario" type="submit">Registrar usuario</button>
+                </form>
+                <p id="mensaje-registro" class="mensaje" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO DE PRODUCTOS -->
+        <section id="vista-catalogo" class="vista oculto">
+            <div class="titulo-seccion">
+                <div><p class="etiqueta">CATÁLOGO</p><h1>Productos tecnológicos</h1>
+                <p>Elige los productos que quieres agregar a tu carrito.</p></div>
+            </div>
+            <div id="lista-productos" class="rejilla-productos"></div>
+        </section>
+
+        <!-- CARRITO DE COMPRAS -->
+        <section id="vista-carrito" class="vista oculto">
+            <p class="etiqueta">TU PEDIDO</p>
+            <h1>Carrito de compras</h1>
+            <div id="lista-carrito" class="lista-carrito"></div>
+            <div class="resumen-total">
+                <span>Total a pagar</span><strong id="total-carrito">$0</strong>
+            </div>
+            <button id="confirmar-compra" class="boton principal">Confirmar compra</button>
+            <p id="mensaje-carrito" class="mensaje" aria-live="polite"></p>
+        </section>
+
+        <!-- DATOS PERSONALES DEL CLIENTE -->
+        <section id="vista-datos" class="vista oculto">
+            <div class="panel">
+                <p class="etiqueta">CUENTA</p><h1>Mis datos personales</h1>
+                <p id="estado-sesion">Inicia sesión para consultar tus datos.</p>
+                <form id="form-datos" class="oculto">
+                    <label for="datos-nombre">Nombre completo</label>
+                    <input id="datos-nombre" required>
+                    <label for="datos-correo">Correo electrónico</label>
+                    <input id="datos-correo" type="email" required>
+                    <label for="datos-direccion">Dirección de envío</label>
+                    <input id="datos-direccion" required>
+                    <label for="datos-usuario">Nombre de usuario</label>
+                    <input id="datos-usuario" required>
+                    <label for="datos-clave">Nueva contraseña</label>
+                    <input id="datos-clave" type="password" minlength="4" placeholder="Escribe la contraseña actual o una nueva" required>
+                    <button class="boton principal" type="submit">Guardar cambios</button>
+                </form>
+                <p id="mensaje-datos" class="mensaje" aria-live="polite"></p>
+                <button id="cerrar-sesion" class="boton claro oculto">Cerrar sesión</button>
+            </div>
+        </section>
+
+        <!-- RESUMEN DE LA ORDEN GENERADA -->
+        <section id="vista-orden" class="vista oculto">
+            <div class="panel">
+                <p class="etiqueta">COMPRA CONFIRMADA</p>
+                <h1>¡Gracias por tu compra!</h1>
+                <div id="resumen-orden"></div>
+                <button class="boton principal" data-vista="catalogo">Volver al catálogo</button>
+            </div>
+        </section>
+    </main>
+
+    <footer><p>TecnoCompra · Tienda de productos tecnológicos</p></footer>
+    <script src="productos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
